@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createTask, deleteTask, getTasks, updateTask } from './api.js';
 import TaskItem from './components/TaskItem.jsx';
 import WeatherWidget from './components/WeatherWidget.jsx';
+import { EmptyIcon, MarkIcon, SpinnerIcon, WarningIcon } from './components/icons.jsx';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -89,17 +90,24 @@ function App() {
   }
 
   const remainingCount = tasks.filter((task) => !task.completed).length;
+  const progressPercent = tasks.length === 0 ? 0 : ((tasks.length - remainingCount) / tasks.length) * 100;
 
   return (
     <div className="app">
       <header className="app__header">
-        <h1>Task Manager</h1>
+        <MarkIcon className="app__mark" aria-hidden="true" />
+        <div className="app__heading">
+          <h1>Task Manager</h1>
+          <p className="app__tagline">Plan it. Track it. Done.</p>
+        </div>
       </header>
 
       <WeatherWidget />
 
-      <main className="task-manager">
-        <h2>Tasks</h2>
+      <main className="task-manager card">
+        <div className="task-manager__heading">
+          <h2>Tasks</h2>
+        </div>
 
         <form onSubmit={handleAddTask} className="task-form">
           <label className="visually-hidden" htmlFor="new-task-title">
@@ -112,7 +120,7 @@ function App() {
             onChange={(event) => setNewTitle(event.target.value)}
             placeholder="What needs to be done?"
             aria-label="Task title"
-            className="task-form__title-input"
+            className="task-form__title-input field"
             required
           />
           <label className="visually-hidden" htmlFor="new-task-description">
@@ -125,7 +133,7 @@ function App() {
             onChange={(event) => setNewDescription(event.target.value)}
             placeholder="Description (optional)"
             aria-label="Task description"
-            className="task-form__description-input"
+            className="task-form__description-input field"
           />
           <button type="submit" className="button button--primary" disabled={isSubmitting}>
             Add task
@@ -133,20 +141,32 @@ function App() {
         </form>
 
         {error && (
-          <p className="app__error" role="alert">
-            {error}
-          </p>
+          <div className="alert" role="alert">
+            <WarningIcon className="alert__icon" aria-hidden="true" />
+            <p className="alert__message">{error}</p>
+          </div>
         )}
 
         {isLoading ? (
-          <p className="app__status">Loading tasks…</p>
+          <p className="app__status">
+            <SpinnerIcon className="spinner" aria-hidden="true" />
+            Loading tasks…
+          </p>
         ) : tasks.length === 0 ? (
-          <p className="app__status">No tasks yet. Add one above to get started.</p>
+          <div className="empty-state">
+            <EmptyIcon className="empty-state__icon" aria-hidden="true" />
+            <p className="app__status">No tasks yet. Add one above to get started.</p>
+          </div>
         ) : (
           <>
-            <p className="task-manager__counter">
-              {remainingCount} of {tasks.length} remaining
-            </p>
+            <div className="task-manager__heading">
+              <span className="task-manager__counter">
+                {remainingCount} of {tasks.length} remaining
+              </span>
+            </div>
+            <div className="progress-track">
+              <div className="progress-track__fill" style={{ width: `${progressPercent}%` }} />
+            </div>
             <ul className="task-list">
               {tasks.map((task) => (
                 <TaskItem

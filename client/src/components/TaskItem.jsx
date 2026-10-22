@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { TrashIcon } from './icons.jsx';
 
 function TaskItem({ task, onToggleComplete, onUpdate, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -62,7 +63,7 @@ function TaskItem({ task, onToggleComplete, onUpdate, onDelete }) {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             aria-label="Edit task title"
-            className="task-item__title-input"
+            className="task-item__title-input field"
           />
           <label className="visually-hidden" htmlFor={`edit-description-${task._id}`}>
             Edit task description
@@ -72,7 +73,7 @@ function TaskItem({ task, onToggleComplete, onUpdate, onDelete }) {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             aria-label="Edit task description"
-            className="task-item__description-input"
+            className="task-item__description-input field"
             rows={2}
           />
           <div className="task-item__edit-actions">
@@ -112,10 +113,10 @@ function TaskItem({ task, onToggleComplete, onUpdate, onDelete }) {
       <button
         type="button"
         onClick={() => onDelete(task._id)}
-        className="button button--danger"
+        className="icon-button"
         aria-label={`Delete task "${task.title}"`}
       >
-        Delete
+        <TrashIcon aria-hidden="true" />
       </button>
     </li>
   );
