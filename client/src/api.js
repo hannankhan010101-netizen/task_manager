@@ -69,3 +69,7 @@ export function deleteTask(id) {
     method: 'DELETE',
   });
 }
+
+export function getWeather(city) {
+  return request(`/weather?city=${encodeURIComponent(city)}`);
+}

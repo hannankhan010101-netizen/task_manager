@@ -123,6 +123,77 @@ textarea:focus-visible {
   color: var(--color-danger-hover);
 }
 
+/* Weather widget */
+.weather-widget {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.weather-widget h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.weather-widget__form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.weather-widget__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.weather-widget__status {
+  margin: 0.75rem 0 0;
+  color: var(--color-text-muted);
+}
+
+.weather-widget__status--error {
+  color: var(--color-danger);
+}
+
+.weather-widget__result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weather-widget__icon {
+  width: 64px;
+  height: 64px;
+}
+
+.weather-widget__location {
+  font-weight: 600;
+  margin: 0;
+}
+
+.weather-widget__temp {
+  font-size: 1.5rem;
+  margin: 0.1rem 0;
+}
+
+.weather-widget__description {
+  margin: 0;
+  text-transform: capitalize;
+  color: var(--color-text-muted);
+}
+
+.weather-widget__meta {
+  margin: 0.1rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
 /* Task manager */
 .task-manager {
   background: var(--color-surface);
@@ -246,7 +317,8 @@ textarea:focus-visible {
     padding: 0.75rem;
   }
 
-  .task-form {
+  .task-form,
+  .weather-widget__form {
     flex-direction: column;
   }
 }

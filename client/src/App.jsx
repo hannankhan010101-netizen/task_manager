@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createTask, deleteTask, getTasks, updateTask } from './api.js';
 import TaskItem from './components/TaskItem.jsx';
+import WeatherWidget from './components/WeatherWidget.jsx';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -94,6 +95,8 @@ function App() {
       <header className="app__header">
         <h1>Task Manager</h1>
       </header>
+
+      <WeatherWidget />
 
       <main className="task-manager">
         <h2>Tasks</h2>
