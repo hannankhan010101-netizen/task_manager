@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const tasksRouter = require('./routes/tasks');
 const healthRouter = require('./routes/health');
+const weatherRouter = require('./routes/weather');
 const errorHandler = require('./middleware/errorHandler');
 
 const createApp = () => {
@@ -17,6 +18,7 @@ const createApp = () => {
 
   app.use('/api/tasks', tasksRouter);
   app.use('/api/health', healthRouter);
+  app.use('/api/weather', weatherRouter);
 
   app.use(errorHandler);
 
