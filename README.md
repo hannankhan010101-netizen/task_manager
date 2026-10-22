@@ -55,7 +55,7 @@ task_manager/
 ```bash
 cd server
 npm install
-cp env.example .env   # fill in MONGO_URI, CLIENT_URL, OPENWEATHER_API_KEY
+cp .env.example .env   # fill in MONGO_URI, CLIENT_URL, OPENWEATHER_API_KEY
 npm run dev            # starts the API on PORT (default 5000)
 ```
 
@@ -88,7 +88,7 @@ npm run build            # production build
 | `OPENWEATHER_API_KEY`  | server  | API key for the OpenWeather current-weather endpoint      |
 | `VITE_API_URL`         | client  | Base URL of the API (default `http://localhost:5000/api`) |
 
-The backend ships a `server/env.example` with placeholder values for all four server
+The backend ships a `server/.env.example` with placeholder values for all four server
 variables — copy it to `server/.env` and fill in the real values. `.env` is git-ignored
 and must never be committed.
 
