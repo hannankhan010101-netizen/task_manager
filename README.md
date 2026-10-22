@@ -146,4 +146,19 @@ the backend proxies the request. This is server-side for three reasons:
 - Once both are deployed, update the backend's `CLIENT_URL` to the live Vercel domain so
   CORS allows it.
 
-**Live Demo:** <add URL>
+**Live Demo:** https://task-manager-rose-nine-17.vercel.app/
+**Backend API:** https://task-manager-78fa.onrender.com
+
+## Submission notes
+
+- **GitHub Repository:** https://github.com/hannankhan010101-netizen/task_manager
+- **Live Demo URL:** https://task-manager-rose-nine-17.vercel.app/
+- **Setup instructions:** see [Setup instructions](#setup-instructions) above
+- **Database schema:** see [Database schema](#database-schema) above
+- **API used:** [OpenWeather Current Weather API](https://openweathermap.org/current) — see
+  [API integration: OpenWeather](#api-integration-openweather) above for the implementation
+  explanation and screenshot
+- **Commits showing the API integration work:**
+  [`feat(api): add OpenWeather proxy endpoint`](https://github.com/hannankhan010101-netizen/task_manager/commit/cc2c4db)
+  and
+  [`feat(client): add weather widget`](https://github.com/hannankhan010101-netizen/task_manager/commit/6b96a68)
