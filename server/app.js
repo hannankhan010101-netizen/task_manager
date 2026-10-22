@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const tasksRouter = require('./routes/tasks');
 const healthRouter = require('./routes/health');
+const errorHandler = require('./middleware/errorHandler');
 
 const createApp = () => {
   const app = express();
@@ -16,6 +17,8 @@ const createApp = () => {
 
   app.use('/api/tasks', tasksRouter);
   app.use('/api/health', healthRouter);
+
+  app.use(errorHandler);
 
   return app;
 };
